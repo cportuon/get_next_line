@@ -32,6 +32,7 @@ char    *get_next_line(int fd)
     }
     while (buff[i] && buff[i] != '\n')
         i++;
+    i++;                                                    //no se que cojones es esto tengo que aberiguarlo, deberes de Unai
     while (buff[i])
     {
         line[j] = buff[i];
@@ -53,7 +54,8 @@ char    *get_next_line(int fd)
             buff[read_line] = '\0';                     // Indicamos el final del string
         }
     }
-    line[j] = '\0';                                     // Indicamos el final del string
+    line[j] = '\n';
+    line[j + 1] = '\0';                                      // Indicamos el final del string
     return (line);
 }
 
