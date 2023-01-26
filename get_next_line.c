@@ -2,7 +2,20 @@
 
 char	*ft_get_rest(char *line)
 {
-	
+	int	i;
+
+	i = 0;
+	if(!line)
+		return(0);
+	while(line[i])
+	{
+		if(line[i] == '\n')
+		{
+			
+			return(0);
+		}
+		i++;
+	}
 }
 
 static char	*ft_read_line(int fd, char *backup, char *buff)
@@ -26,11 +39,9 @@ static char	*ft_read_line(int fd, char *backup, char *buff)
 		buff[read_line] = '\0';
 		aux = backup;
 		backup = ft_strjoin(aux, buff);
-		
 	}
 	return(backup);
 }
-
 char	*get_next_line(int fd)
 {
 	char		*line;
@@ -42,13 +53,13 @@ char	*get_next_line(int fd)
 	buff = (char *)malloc(sizeof(char *) * BUFFER_SIZE + 1);
 	if(!buff)
 		return(0);
-	line = ft_read_line(fd, backup, buff);
+	line = ft_read_line(fd, temp, buff);
 	free(buff);
 	if(!line)
 	{
-		free(backup);
+		free(temp);
 		return(0);
 	}
-	backup = ft_get_rest(line);
+	temp = ft_get_rest(line);
 	return(line);
 }
