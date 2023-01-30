@@ -2,7 +2,8 @@
 
 char	*ft_get_rest(char *line)
 {
-	int	i;
+	int		i;
+	char	*temp;
 
 	i = 0;
 	if(!line)
@@ -11,7 +12,7 @@ char	*ft_get_rest(char *line)
 	{
 		if(line[i] == '\n')
 		{
-			
+			temp = ft_substr(line, i + 1, ft_strlen(len) - i);
 			return(0);
 		}
 		i++;

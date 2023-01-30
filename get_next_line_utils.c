@@ -9,7 +9,7 @@ int	ft_strlen(char *str)
 		i++;
 	return(i);
 }
-char	*ft_strjoin(char *str1, char *str2)
+char *ft_strjoin(char *str1, char *str2)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -39,4 +39,15 @@ char	*ft_strjoin(char *str1, char *str2)
 	}
 	dest[i] = '\0';
 	return(dest);
+}
+char *ft_substr(char *line, int	start, int strlen2)
+{
+	int		i;
+	char	*substr;
+
+	if(!line)
+		return(0);
+	if(start > ft_strlen(line))
+		
+	
 }
