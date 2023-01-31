@@ -12,11 +12,13 @@ char	*ft_get_rest(char *line)
 	{
 		if(line[i] == '\n')
 		{
-			temp = ft_substr(line, i + 1, ft_strlen(len) - i);
+			temp = ft_substr(line, i + 1, ft_strlen(line) - i);
 			return(0);
 		}
 		i++;
 	}
+	temp[i] = '\0'; 
+	return(temp);
 }
 
 static char	*ft_read_line(int fd, char *backup, char *buff)
