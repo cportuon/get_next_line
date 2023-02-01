@@ -7,6 +7,8 @@ int	main(void)
 
 	fd = open("read.txt", O_RDONLY);
 	read = 	get_next_line(fd);
-	printf("First line: %s\n", read);	
+	printf("First line: %s\n", read);
+	read = 	get_next_line(fd);
+	printf("Second line: %s\n", read);	
 	return(0);
 }
