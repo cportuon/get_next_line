@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	temp = ft_get_rest(line);
 	return(line);
 }
-static char	*ft_read_line(int fd, char *backup, char *buff)
+char	*ft_read_line(int fd, char *backup, char *buff)
 {
 	int		read_line;
 	char	*aux;
@@ -48,6 +48,7 @@ static char	*ft_read_line(int fd, char *backup, char *buff)
 		buff[read_line] = '\0';
 		if(!backup)
 			backup = ft_strdup("");
+		
 		aux = backup;
 		backup = ft_strjoin(aux, buff);
 		free(aux);
@@ -67,13 +68,16 @@ char	*ft_get_rest(char *line)
 	while(line[i] != '\n' && line[i])
 		i++;
 	if(line[i] == '\0')
+	{	
 		return(0);
+	}
 	temp = ft_substr(line, i + 1, ft_strlen(line) - i);
 	if(*temp == '\0')
 	{
 		free(temp);
 		temp = NULL;
 	}
-	temp[i + 1] = '\0'; 
+	//printf();
+	line[i + 1] = '\0'; 
 	return(temp);
 }
