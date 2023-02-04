@@ -2,7 +2,7 @@
 
 int	main(void)
 {
-	int	fd;
+	int		fd;
 	char	*read;
 
 	fd = open("read.txt", O_RDONLY);

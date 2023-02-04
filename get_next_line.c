@@ -11,6 +11,51 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+char	*ft_get_rest(char *line)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	while(line[i] != '\n' && line[i])
+		i++;
+	if(line[i] == '\0')
+		return(0);
+	temp = ft_substr(line, i + 1, ft_strlen(line) - i);
+	if(*temp == '\0')
+	{
+		free(temp);
+		temp = NULL;
+	}
+	line[i + 1] = '\0'; 
+	return(temp);
+}
+
+char	*ft_read_line(int fd, char *backup, char *buff)
+{
+	int		read_line;
+	char	*aux;
+
+	read_line = 1;
+	while(read_line > 0)
+	{
+		read_line = read(fd, buff, BUFFER_SIZE);
+		if(read_line == -1)
+			return(0);
+		else if(read_line == 0)
+			break ;
+		buff[read_line] = '\0';
+		if(!backup)
+			backup = ft_strdup("");
+		aux = backup;
+		backup = ft_strjoin(aux, buff);
+		free(aux);
+		aux = NULL;
+		if(ft_strchr(buff, '\n'))
+			break ;
+	}
+	return(backup);
+}
 char	*get_next_line(int fd)
 {
 	char		*line;
@@ -31,53 +76,4 @@ char	*get_next_line(int fd)
 	}
 	temp = ft_get_rest(line);
 	return(line);
-}
-char	*ft_read_line(int fd, char *backup, char *buff)
-{
-	int		read_line;
-	char	*aux;
-
-	read_line = 1;
-	while(read_line > 0)
-	{
-		read_line = read(fd, buff, BUFFER_SIZE);
-		if(read_line == -1)
-			return(0);
-		else if(read_line == 0)
-			break ;
-		buff[read_line] = '\0';
-		if(!backup)
-			backup = ft_strdup("");
-		
-		aux = backup;
-		backup = ft_strjoin(aux, buff);
-		free(aux);
-		aux = NULL;
-		if(ft_strchr(buff, '\n'))
-			break ;
-	}
-	return(backup);
-}
-
-char	*ft_get_rest(char *line)
-{
-	int		i;
-	char	*temp;
-
-	i = 0;
-	while(line[i] != '\n' && line[i])
-		i++;
-	if(line[i] == '\0')
-	{	
-		return(0);
-	}
-	temp = ft_substr(line, i + 1, ft_strlen(line) - i);
-	if(*temp == '\0')
-	{
-		free(temp);
-		temp = NULL;
-	}
-	//printf();
-	line[i + 1] = '\0'; 
-	return(temp);
 }

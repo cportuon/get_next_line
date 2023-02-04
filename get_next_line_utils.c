@@ -35,11 +35,8 @@ char *ft_strdup(char *s)
 	if(!dest)
 		return(0);
 	i = 0;
-	while(i < len)
-	{
+	while(i++ < len)
 		dest[i] = s[i];
-		i++;
-	}
 	dest[i] = '\0';
 	return(dest);
 }
@@ -63,11 +60,7 @@ char *ft_strjoin(char *str1, char *str2)
 		i++;
 	}
 	while(str2[j])
-	{
-		dest[i] = str2[j];
-		j++;
-		i++;
-	}
+		dest[i++] = str2[j++];
 	dest[i] = '\0';
 	return(dest);
 }
@@ -94,14 +87,8 @@ char *ft_substr(char *line, int	start, int strlen2)
 	if(!substr)
 		return(0);
 	i = 0;
-	while(strlen2 > 0)
-	{
-		substr[i] = line[start];
-		i++;
-		start++;
-		strlen2--;
-	}
+	while(strlen2-- > 0)
+		substr[i++] = line[start++];
 	substr[i] = '\0';
 	return(substr);
 }
-
