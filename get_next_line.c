@@ -68,6 +68,7 @@ char	*get_next_line(int fd)
 	if(!buff)
 		return(0);
 	line = ft_read_line(fd, temp, buff);
+	printf("\nVariable buff: %s\n", buff);
 	free(buff);
 	if(!line)
 	{
