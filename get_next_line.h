@@ -26,4 +26,8 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_read_line(int fd, char *backup, char *buff);
 char	*ft_get_rest(char *line);
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 #endif

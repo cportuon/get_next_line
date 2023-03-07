@@ -53,7 +53,7 @@ char	*ft_strjoin(char *str1, char *str2)
 		return (0);
 	i = 0;
 	j = 0;
-	dest = (char *)malloc(sizeof(char) * ft_strlen(str1) + ft_strlen(str2) + 1);
+	dest = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!dest)
 		return (0);
 	while (str1[i])
@@ -89,7 +89,7 @@ char	*ft_substr(char *line, int start, int strlen2)
 		return (0);
 	if (start > ft_strlen(line))
 		return (ft_strdup(""));
-	substr = (char *) malloc(sizeof(char) * strlen2 + 1);
+	substr = (char *) malloc(sizeof(char) * (strlen2 + 1));
 	if (!substr)
 		return (0);
 	i = 0;

@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
 		return (0);
 	line = ft_read_line(fd, temp, buff);
@@ -27,6 +27,7 @@ char	*get_next_line(int fd)
 	if (!line)
 	{
 		free(temp);
+		temp = NULL;
 		return (0);
 	}
 	temp = ft_get_rest(line);
